@@ -96,7 +96,7 @@ private:
     T re, im;
 
     friend complex& __doapl (complex*, const complex&);
-}
+};
 
 
 {
@@ -131,7 +131,7 @@ private:
     double re, im;
 
     friend complex& __doapl (complex*, const complex&);
-}
+};
 
 {
     complex c1(2, 1);
@@ -163,5 +163,104 @@ private:
     double re, im;
 
     friend complex& __doapl (complex*, const complex&);
+};
+```
+# 构造函数放在private区
+> singleton:外部只有一个接口访问这个类，单例模式。
+```C++
+class A {
+public:
+	static A& getInstance();
+	setup() { ... }
+private:
+	A();
+	A(const A& rhs);
+	...
+};
+
+A& A::getInstance() {
+	static A a;
+	return a;
+};
+```
+> 调用时候，不能用传统方式A a();　只能用A::getInstance().setup();
+# 常量成员函数(const member functions)
+函数分为内部改变数据的与内部不会改变数据的。不会改变数据的则最好使用const。
+```C++
+	double real() const { return re; }
+	double imag() const { return im; }
+```
+# 函数该加const时候不加const的后果
+这样调用是ok 的。
+```C++
+{
+	complex c1(2, 1);
+	cout << c1.real();
+	cout << c1.imag();
+}
+```
+下面这种情况不加，当c1.real()执行时，real()函数后面没有加const，此时，c1.real()语句是const，不能更改，然后real()函数会发生更改，所以会导致编译器错误。
+```C++
+{
+	const complex c1(2, 1);
+	cout << c1.real();
+	cout << c1.imag();
+}
+```
+# 参数传递：pass by value vs. pass by reference(to const)
+值传递：整个包都会传递过去，效率较差。<br>
+尽量所有参数都传引用。<br>
+传递速度很快，且不能更改：则pass by reference to const。
+```C++
+class complex
+{
+public:
+    complex (double r = 0, double i = 0) : re (r), im (i) { }   //初始化参数　
+    /*
+    相当于 complex (double r = 0, double i = 0) { re = r; im = i; }
+    */
+    complex& operator += (const complex&);
+    double real () const { return re; }
+    double imag () const { return im; }
+private:
+    double re, im;
+
+    friend complex& __doapl (complex*, const complex&);
+};
+```
+# 返回值传递：return by value vs. return by reference(to const)
+```C++
+ostream& operator << (ostream& os, const complex& x) {
+	return os << '(' << real(x) << ',' << imag(x) << ')';
+}
+```
+# 友元(friend)
+> 友元函数是可以直接访问类的私有成员的非成员函数。 它是定义在类外的普通函数，它不属于任何类，但需要在类的定义中加以声明，声明时只需在友元的名称前加上关键字friend。<br>
+参考链接：[友元](https://blog.csdn.net/jackystudio/article/details/11799777)
+```C++
+inline complex& __doapl(complex* ths, const complex& r) {
+	ths->re += r.re;	//自由取得friend的private成员
+	ths->im += r.im;
+	return *ths;
+}
+```
+# 相同class 的各个objects互为friends(友元)
+```C++
+class complex {
+public:
+	complex (double r = 0, double i = 0) : re (r), im (i) { }
+	
+	int func(const complex& param) { 	//完美解释
+		return param.re + param.im;
+	}
+private:
+	double re, im;
+};
+
+
+{
+	complex c1(2, 1);
+	complex c2;
+	c2.func(c1);
 }
 ```

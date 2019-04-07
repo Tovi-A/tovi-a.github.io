@@ -74,7 +74,7 @@ private:
 1. 不带指针的类(complex)
 2. 带指针的类(string)
 # 头文件中的防卫式声明　　　
-```
+```C++
 #ifndef __COMPLEX__
 #define __COMPLEX__
 
@@ -83,7 +83,7 @@ private:
 #endif
 ```
 # 模板(class template)
-```
+```C++
 template<typename T>
 class complex
 {
@@ -98,7 +98,7 @@ private:
     friend complex& __doapl (complex*, const complex&);
 }
 
- 
+
 {
     complex<double> c1(2.5, 1.5);
     complex<int> c2(2, 6);
@@ -116,7 +116,7 @@ private层变量只能class本体成员函数访问。
 > 构造函数有两个阶段：
 1. 初始化阶段。（这就是初始化参数的效果，如果不那样做，就等于放弃了初始化阶段，从而效率变差。）
 2. 赋值阶段。
-```
+```C++
 class complex
 {
 public:
@@ -141,12 +141,12 @@ private:
 }
 ```
 # 构造函数可以有很多个－overloading（重载）
-```
+```C++
     double real () const { return re; }
     void real (double r) { re = r; }
 ```
 
-```
+```C++
 class complex
 {
 public:

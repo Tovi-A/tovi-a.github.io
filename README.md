@@ -9,3 +9,4 @@
 - 执行hexo g -d。
 2. 从github上clone下来更新
 - 依次执行npm install hexo、npm install 、 npm install hexo-deployer-git。
+> index首页丢失解决方法：将.deploy_git删除，重新跑一遍1中npm ...。

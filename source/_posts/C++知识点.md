@@ -69,3 +69,99 @@ private:
 	int *p;		// 一指针成员
 };
 ```
+
+# 经典分类　　　
+1. 不带指针的类(complex)
+2. 带指针的类(string)
+# 头文件中的防卫式声明　　　
+```
+#ifndef __COMPLEX__
+#define __COMPLEX__
+
+..........
+
+#endif
+```
+# 模板(class template)
+```
+template<typename T>
+class complex
+{
+public:
+    complex (T r = 0, T i = 0) : re(r), im(i) {     }
+    complex& operator += (const complex&);
+    T real () const { return re; }
+    T imag () const { return im; }
+private:
+    T re, im;
+
+    friend complex& __doapl (complex*, const complex&);
+}
+
+ 
+{
+    complex<double> c1(2.5, 1.5);
+    complex<int> c2(2, 6);
+}
+```
+# 内联函数(inline)
+函数在类本体内定义则是内联函数，否则不是。所有函数都可以写成inline，但有些函数定义为inline，但是编译器没有能力将他做成inline。（函数过于复杂则不能）
+# 访问级别　　　
+private层变量只能class本体成员函数访问。
+# 构造函数 
+- 创建一个对象时候，一个函数会自动调用起来，这个函数就是构造函数。  
+- 构造函数没有返回值。
+- 构造函数可以有默认值。
+- 初始化参数：仅构造函数才享有。　　　
+> 构造函数有两个阶段：
+1. 初始化阶段。（这就是初始化参数的效果，如果不那样做，就等于放弃了初始化阶段，从而效率变差。）
+2. 赋值阶段。
+```
+class complex
+{
+public:
+    complex (double r = 0, double i = 0) : re (r), im (i) { }   //初始化参数　
+    /*
+    相当于 complex (double r = 0, double i = 0) { re = r; im = i; }
+    */
+    complex& operator += (const complex&);
+    double real () const { return re; }
+    double imag () const { return im; }
+private:
+    double re, im;
+
+    friend complex& __doapl (complex*, const complex&);
+}
+
+{
+    complex c1(2, 1);
+    complex c2;
+    complex* p = new complex(4);
+    ...
+}
+```
+# 构造函数可以有很多个－overloading（重载）
+```
+    double real () const { return re; }
+    void real (double r) { re = r; }
+```
+
+```
+class complex
+{
+public:
+    complex (double r = 0, double i = 0) : re (r), im (i) { }   //初始化参数　
+    complex () : re(0), im(0) { }   //这种写法不行，会使得编译器犹豫不知道选择哪一个
+    /*
+    complex c1;
+    complex c2();
+    */
+    complex& operator += (const complex&);
+    double real () const { return re; }
+    double imag () const { return im; }
+private:
+    double re, im;
+
+    friend complex& __doapl (complex*, const complex&);
+}
+```

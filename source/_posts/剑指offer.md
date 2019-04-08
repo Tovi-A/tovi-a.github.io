@@ -83,3 +83,30 @@ public:
     }
 };
 ```
+# 反转链表
+题目链接：[题目链接](https://www.acwing.com/problem/content/33/)<br>
+题解：[题解](https://www.acwing.com/solution/acwing/content/743/)
+```C++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *prev = NULL;
+        ListNode *cur = head;
+        while (cur) {
+            ListNode *next = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = next;
+        }
+        return prev;
+    }
+};
+```

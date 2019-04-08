@@ -47,3 +47,39 @@ public:
     }
 };
 ```
+# 链表中环的入口结点
+题目链接：[题目链接](https://www.acwing.com/problem/content/86/)<br>
+题解：[题解](https://www.acwing.com/solution/acwing/content/741/)
+```C++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *entryNodeOfLoop(ListNode *head) {
+        if (head == NULL || head->next == NULL)   return NULL;
+        ListNode *first = head, *second = head;
+        while (first && second) {
+            first = first->next;
+            second = second->next;
+            if (second)     second = second->next;
+            else    return NULL;
+            
+            if (first == second) {
+                first = head;
+                while (first != second) {
+                    first = first->next;
+                    second = second->next;
+                }
+                return first;
+            }
+        }
+        return NULL;
+    }
+};
+```

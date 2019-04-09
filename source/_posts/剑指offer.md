@@ -171,3 +171,51 @@ public:
     }
 };
 ```
+# 二叉树的镜像
+题目链接：[题目链接](https://www.acwing.com/problem/content/37/)<br>
+题解：[题解](https://www.acwing.com/solution/acwing/content/746/)
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void mirror(TreeNode* root) {
+        if (root == NULL)   return ;
+        swap(root->left, root->right);
+        mirror(root->left);
+        mirror(root->right);
+    }
+};
+```
+# 对称的二叉树
+题目链接：[题目链接](https://www.acwing.com/problem/content/38/)<br>
+题解：[题解](https://www.acwing.com/solution/acwing/content/747/)
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        return !root || dfs(root->left, root->right);
+    }
+    
+    bool dfs(TreeNode *p, TreeNode *q) {
+        if (!p || !q)   return !p && !q;
+        return p->val == q->val && dfs(p->left, q->right) && dfs(p->right, q->left);
+    }
+};
+```

@@ -7,68 +7,9 @@ categories: C++
 comments: true
 mathjax: true
 ---
+侯捷老师－C++课件_面向对象高级编程：[链接]()
 # 什么是深复制？什么是浅复制？（深拷贝与浅拷贝）  
 参考链接：[深拷贝与浅拷贝](https://blog.csdn.net/bluescorpio/article/details/4322682)  
-所谓浅拷贝，指的是在对象复制时，只是对对象中的数据成员进行简单的赋值，上面的例子都是属于浅拷贝的情况，默认拷贝构造函数执行的也是浅拷贝。大多情况下“浅拷贝”已经能很好地工作了，但是一旦对象存在了动态成员，那么浅拷贝就会出问题了，让我们考虑如下一段代码：  
-```C++
-class Rect
-{
-public:
-	Rect()		// 构造函数，p指向堆中分配的一空间
-	{
-		p = new int(100);
-	}
-	~Rect()		// 析构函数，释放动态分配的空间
-	{
-		if(p != NULL)	
-		{
-			delete p;
-		}
-	}
-private:
-	int width;
-	int height;
-	int *p;		// 一指针成员
-};
-
-int main()
-{
-	Rect rect1;
-	Rect rect2(rect1);   // 复制对象
-	return 0;
-}
-```
-在这段代码运行结束之前，会出现一个运行错误。原因就在于在进行对象复制时，对于动态分配的内容没有进行正确的操作。
-具体分析见链接。
-在“深拷贝”的情况下，对于对象中动态成员，就不能仅仅简单地赋值了，而应该重新动态分配空间，如上面的例子就应该按照如下的方式进行处理：
-```C++
-class Rect
-{
-public:
-	Rect()		// 构造函数，p指向堆中分配的一空间
-	{
-		p = new int(100);
-	}
-	Rect(const Rect& r)
-	{
-		width = r.width;
-		height = r.height;
-		p = new int;	// 为新对象重新动态分配空间
-		*p = *(r.p);
-	}
-	~Rect()		// 析构函数，释放动态分配的空间
-	{
-		if(p != NULL)	
-		{
-			delete p;
-		}
-	}
-private:
-	int width;
-	int height;
-	int *p;		// 一指针成员
-};
-```
 
 # 经典分类　　　
 1. 不带指针的类(complex)
@@ -264,3 +205,47 @@ private:
 	c2.func(c1);
 }
 ```
+# 操作符重载－１，　成员函数，this
+```C++
+inline complex& __doapl(complex* ths, const complex& r) {
+	ths->re += r.re;
+	ths->im += r.im;
+	return *ths;
+}
+
+inline complex& complex::operator += (const complex& r) {
+	return __doapl (this, r);
+}
+
+{
+	complex c1(2, 1);
+	complex c2(5);
+
+	c2 += c1;
+}
+
+====>>>//所有成员函数都带有一个隐藏的this 指针
+inline complex& complex::operator += (this, const complex& r) {
+	return __doapl (this, r);
+}
+```
+# return by reference 语法分析
+> 传递着无需知道接受者是以reference形式接收
+```C++
+inline complex& __doapl(complex* ths, const complex& r) {
+	ths->re += r.re;
+	ths->im += r.im;
+	return *ths;
+}
+
+inline complex& complex::operator += (const complex& r) {
+	return __doapl (this, r);
+}
+```
+# 操作符重载－２，非成员函数(无this)
+![image](6)
+![image](7)
+![image](7)
+![image](7)
+![image](7)
+![image](7)

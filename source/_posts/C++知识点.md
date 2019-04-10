@@ -249,3 +249,79 @@ inline complex& complex::operator += (const complex& r) {
 ![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/9.png?raw=true)
 ![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/10.png?raw=true)
 ![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/11.png?raw=true)
+# 类里面带着指针
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/1.png?raw=true)
+```C++
+	string s3(s1); 	//拷贝构造
+	string s3 = s2; 	//拷贝赋值
+```
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/2.png?raw=true)
+```C++
+	String(const String& str); 	//拷贝构造
+	String& operator=(const String& str);	//拷贝赋值
+private:
+	...
+	char* m_data;	//最好写成动态形式　
+```
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/3.png?raw=true)
+```C++
+	delete[] m_data; 	//析构清理
+```
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/4.png?raw=true)
+> 会导致内存泄露，制造野指针，变成孤儿（浅拷贝）。
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/5.png?raw=true)
+> 深拷贝
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/6.png?raw=true)
+> 三步：１、先分配空间。２、重新创造自己。３、拷贝过来。
+> 必须要进行检测自我赋值。如果相同时候结果会出错，将原地址也清空了。
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/7.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/8.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/9.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/10.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/11.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/12.png?raw=true)
+> stack自动释放，而heap必须手动释放。
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/13.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/14.png?raw=true)
+> 静态，作用域结束之后仍然存在。
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/15.png?raw=true)
+> 全局作用域。
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/16.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/17.png?raw=true)
+> new分为三个动作：１、分配内存。２、转型。３、构造函数。
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/18.png?raw=true)
+> delete两个动作：１、析构函数。２、delete.
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/19.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/20.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/21.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/22.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/23.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/24.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/25.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/26.png?raw=true)
+
+![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/27.png?raw=true)

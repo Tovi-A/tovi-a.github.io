@@ -7,7 +7,7 @@ categories: C++
 comments: true
 mathjax: true
 ---
-侯捷老师－C++课件_面向对象高级编程：[链接](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/%E4%BE%AF%E6%8D%B7%E8%AE%B2%E5%BA%A7%EF%BC%9AC%2B%2B%E8%AF%BE%E4%BB%B6_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B(PDF%E9%AB%98%E6%B8%85).pdf)
+侯捷老师－C++课件_面向对象高级编程：[链接](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-c%2B%2B.pdf)
 # 什么是深复制？什么是浅复制？（深拷贝与浅拷贝）  
 参考链接：[深拷贝与浅拷贝](https://blog.csdn.net/bluescorpio/article/details/4322682)  
 
@@ -325,3 +325,72 @@ private:
 ![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/26.png?raw=true)
 
 ![image](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/27.png?raw=true)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/28.png)
+> ==>>后面是以c的调用。相同的函数传递的是不同的地址。成员函数有一个隐藏的this指针，可以在函数中去使用它，在参数列中不可以写。加上static后不属于某一个对象，只有一份。**静态函数没有this指针，指针去存取静态数据，不能像一般成员函数那样存取一般数据成员。**
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/29.png)
+> **静态数据一定要在类的外部设置初值（定义）。**　静态函数只能处理静态数据。两种调用方式：类调用、对象调用。
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/30.png)
+> 这个才是更好的写法。有调用a 才会出现，使得资源不浪费。
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/31.png)
+> 生成的class只想产生一个对象。这里的A只有一份，设置静态函数使得与外界联系的唯一接口。这里如果没有创建a，则会浪费资源。
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/32.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/33.png)
+> 模板写法。T 只是一个符号而已。
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/34.png)
+> 编译器会对函数模板进行参数推到。<操作符重载。
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/35.png)
+> 所有东西被包装一个namespace里面，防止自己写的与其他人写的重名。也可以不一下全部打开，一条一条的打开。
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/36.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/37.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/38.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/39.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/40.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/41.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/42.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/43.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/44.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/45.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/46.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/47.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/48.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/49.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/50.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/51.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/52.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/53.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/54.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/55.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/56.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/57.png)
+
+![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/58.png)

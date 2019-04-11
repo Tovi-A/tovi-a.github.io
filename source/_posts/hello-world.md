@@ -1,5 +1,6 @@
 ---
 title: Hello World
+password: 123456
 comments: true
 ---
 

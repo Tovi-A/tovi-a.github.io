@@ -290,3 +290,54 @@ public:
  * int param_4 = obj.getMin();
  */
 ```
+# 栈的压入、弹出序列
+题目链接：[题目链接](https://www.acwing.com/problem/content/40/)
+```C++
+class Solution {
+public:
+    bool isPopOrder(vector<int> pushV,vector<int> popV) {
+        if (pushV.size() != popV.size())   return false;
+        stack <int> s;
+        int num = 0;
+        for (int i = 0; i<pushV.size(); i++) {
+            s.push(pushV[i]);
+            while (!s.empty() && popV[num] == s.top()) {
+                s.pop();
+                num ++ ;
+            }
+        }
+        if (s.empty())  return true;
+        return false;
+    }
+};
+```
+# 不分行从上往下打印二叉树
+题目链接：[题目链接](https://www.acwing.com/problem/content/41/)
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> printFromTopToBottom(TreeNode* root) {
+        vector <int> res(0);
+        queue <TreeNode*> q;
+        if (root == NULL)   return res;
+        q.push(root);
+        while (!q.empty()) {
+            TreeNode* cur = q.front();
+            q.pop();
+            res.push_back(cur->val);
+            if (cur->left)  q.push(cur->left);
+            if (cur->right)     q.push(cur->right);
+        }
+        return res;
+    }
+};
+```

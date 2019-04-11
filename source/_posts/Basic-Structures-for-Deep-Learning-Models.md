@@ -30,6 +30,9 @@ mathjax: true
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/11.png)
 
+# RNN(循环神经网络)
+参考链接：[RNN](https://blog.csdn.net/heyongluoyao8/article/details/48636251)
+
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/12.png)
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/13.png)
@@ -42,10 +45,13 @@ mathjax: true
 > 双向RNN,f3存在的目的就是将f1与f2的output合在一起。
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/16.png)
-> 椎体RNN，好处是可以将sequence缩短。
+> 锥体RNN，好处是可以将sequence缩短。
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/17.png)
 > 一个RNN的样子。其中y是从h'算出来的。（最简单的RNN)
+
+# LSTM(长短时记忆网络)
+(https://blog.csdn.net/jiede1/article/details/58595418)
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/18.png)
 $c^t$ 、$h^t$接其他的LSTM,LSTM的输入有两个vector,h是变化非常快的，而c变化较慢（记住以前的information）
@@ -61,6 +67,8 @@ $c^{t-1}$的作用。
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/22.png)
 再次循环，反复使用。
+
+# GRU
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/23.png)
 GRU不像LSTM有两个速度不一样的输入。出的箭头表示乘上了一个matrix，上面那个等式是$h{t-1}$,GRU的运算量比较小。
@@ -90,8 +98,10 @@ GRU不像LSTM有两个速度不一样的输入。出的箭头表示乘上了一�
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/35.png)
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/36.png)
+下一层只连接上一层的若干块。（每一个神经元只管皮肤的一小块部分）
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/37.png)
+不同的神经元可以有相同的参数（参数共享）
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/lihongyi-kejian/38.png)
 

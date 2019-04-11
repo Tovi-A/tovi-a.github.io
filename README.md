@@ -10,3 +10,13 @@
 2. 从github上clone下来更新
 - 依次执行npm install hexo、npm install 、 npm install hexo-deployer-git。
 > index首页丢失解决方法：将.deploy_git删除，重新跑一遍1中npm ...。
+# 提交大文件
+1. [git lfs的使用(安装)](https://www.jianshu.com/p/493b81544f80)
+2. 上传命令
+- git lfs install (git lfs init)
+- git lfs track "*.png"     //这里"*.png"表示上传所有png图片
+- git add .gitattributes
+- git add .
+- git commit -m "提交大文件"
+- git push origin hexo
+3. 若还是不能上传，则撤回commit，再次尝试。撤回commit可参考[撤回](https://blog.csdn.net/quiet_girl/article/details/79487966)。

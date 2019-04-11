@@ -219,4 +219,74 @@ public:
     }
 };
 ```
+# 顺时针打印矩阵
+题目链接：[题目链接](https://www.acwing.com/problem/content/39/)<br>
+题解：[题解](https://www.acwing.com/solution/acwing/content/748/)
+```C++
+class Solution {
+public:
+    vector<int> printMatrix(vector<vector<int> > matrix) {
+        vector <int> res;
+        int n = matrix.size();
+        if (!n)     return res;
+        int m = matrix[0].size();
+        
+        vector<vector<bool>> st(n, vector<bool>(m, false));
+        int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};   //四个方向，上右下左
+        int x = 0, y = 0, d = 1;    //d表示方向，开始第一个下标
+        
+        for (int i = 0; i<n * m; i++) {
+            res.push_back(matrix[x][y]);
+            st[x][y] = true;
+            int a = x + dx[d], b = y + dy[d];
+            if (a < 0 || a >= n || b < 0 || b >= m || st[a][b]) {
+                d = (d+1) % 4;
+                a = x + dx[d], b = y + dy[d];
+            }
+            x = a, y = b;
+        }
+        return res;
+    }
+};
+```
+# 包含min函数的栈
+题目链接：[题目链接](https://www.acwing.com/problem/content/90/)<br>
+题解：[题解](https://www.acwing.com/solution/acwing/content/749/)
+```C++
+class MinStack {
+public:
+    /** initialize your data structure here. */
+    stack <int> s;
+    stack <int> Min;
+    MinStack() {
+        
+    }
+    
+    void push(int x) {
+        s.push(x);
+        if (Min.empty() || Min.top() > x)   Min.push(x);
+    }
+    
+    void pop() {
+        if (s.top() == Min.top())   Min.pop();
+        s.pop();
+    }
+    
+    int top() {
+        return s.top();
+    }
+    
+    int getMin() {
+        return Min.top();
+    }
+};
 
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+```

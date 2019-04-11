@@ -14,7 +14,7 @@
 1. [git lfs的使用(安装)](https://www.jianshu.com/p/493b81544f80)
 2. 上传命令
 - git lfs install (git lfs init)
-- git lfs track "*.png"     //这里"*.png"表示上传所有png图片
+- git lfs track "*.png"     //这里表示上传所有png图片
 - git add .gitattributes
 - git add .
 - git commit -m "提交大文件"

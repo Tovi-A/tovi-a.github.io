@@ -341,3 +341,44 @@ public:
     }
 };
 ```
+# 分行从上往下打印二叉树
+题目链接：[题目链接](https://www.acwing.com/problem/content/description/42/)<br>
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> printFromTopToBottom(TreeNode* root) {
+        vector<vector<int>> res;
+        if (!root)  return res;
+        
+        queue<TreeNode* > q;
+        q.push(root);
+        q.push(nullptr);        //队列里面加一个标记nullptr表示这一层已经结束了
+        
+        vector<int> level;
+        while (q.size()) {
+            auto t = q.front();
+            q.pop();
+            if (!t) {
+                if (level.empty())  break;
+                res.push_back(level);
+                level.clear();
+                q.push(nullptr);
+                continue;
+            }
+            level.push_back(t->val);
+            if (t->left)    q.push(t->left);
+            if (t->right)   q.push(t->right);
+        }
+        return res;
+    }
+};
+```

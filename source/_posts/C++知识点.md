@@ -356,16 +356,20 @@ private:
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/38.png)
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/39.png)
+> 里面有另外一个东西。queue里面有一个deque。A has a B,A的功能让B去完成。
+> Adapter设计模式。queue是一个Adapter.
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/40.png)
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/41.png)
+> 构造由内而外，析构由外而内。
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/42.png)
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/43.png)
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/44.png)
+> 父类的析构函数必须是virtual.
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/45.png)
 

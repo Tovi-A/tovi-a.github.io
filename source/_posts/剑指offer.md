@@ -382,3 +382,106 @@ public:
     }
 };
 ```
+# 之字形打印二叉树
+题目链接：[题目链接](https://www.acwing.com/problem/content/43/)
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> printFromTopToBottom(TreeNode* root) {
+        vector<vector<int>> res;
+        if (!root)  return res;
+        
+        queue<TreeNode* > q;
+        q.push(root);
+        q.push(nullptr);
+        int flag = false;
+        vector<int> level;
+        while (q.size()) {
+            auto t = q.front();
+            q.pop();
+            if (!t) {
+                if (level.empty())  break;
+                if (flag)   reverse(level.begin(), level.end());
+                flag = !flag;
+                res.push_back(level);
+                level.clear();
+                q.push(nullptr);
+                continue;
+            }
+            level.push_back(t->val);
+            if (t->left)    q.push(t->left);
+            if (t->right)   q.push(t->right);
+        }
+        return res;
+    }
+};
+```
+# 二叉搜索树的后序遍历序列
+题目链接:[题目链接](https://www.acwing.com/problem/content/44/)
+```C++
+class Solution {
+public:
+
+    vector<int> seq;
+    
+    bool verifySequenceOfBST(vector<int> sequence) {
+        seq = sequence;
+        
+        return dfs(0, seq.size()-1);
+    }
+    
+    bool dfs(int l, int r) {
+        if (l >= r)     return true;
+        int root = seq[r];
+        int k = l;
+        while (k < r && seq[k] < root)  k ++ ;
+        for (int i = k; i < r; i++) {   //判断右子树是否合法
+            if (seq[i] < root) 
+                return false;
+        }
+        return dfs(l, k - 1) && dfs(k, r-1);
+    }
+};
+```
+# 二叉树中和为某一值的路径
+题目链接：[题目链接](https://www.acwing.com/problem/content/45/)
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> path;
+
+    vector<vector<int>> findPath(TreeNode* root, int sum) {
+        dfs(root, sum);
+        return ans;
+    }
+    
+    void dfs(TreeNode *root, int sum) {
+        if (!root)  return ;
+        path.push_back(root->val);
+        sum -= root->val;
+        if (!root->left && !root->right && !sum)    ans.push_back(path);
+        dfs(root->left, sum);
+        dfs(root->right, sum);
+        path.pop_back();        //恢复原状
+    }
+};
+```

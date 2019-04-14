@@ -372,6 +372,7 @@ private:
 > 父类的析构函数必须是virtual.
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/45.png)
+> 纯虚函数：子类一定要去重新定义他，父类并没有去定义。这也是一种设计模式。
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/46.png)
 
@@ -380,6 +381,7 @@ private:
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/48.png)
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/49.png)
+> 既有继承，又有复合，构造时候谁先？
 
 ![image](https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/50.png)
 

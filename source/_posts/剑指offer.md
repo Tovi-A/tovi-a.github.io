@@ -485,3 +485,84 @@ public:
     }
 };
 ```
+# 复杂链表的复刻
+题目链接：[题目链接](https://www.acwing.com/problem/content/89/)
+```C++
+/**
+ * Definition for singly-linked list with a random pointer.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next, *random;
+ *     ListNode(int x) : val(x), next(NULL), random(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *copyRandomList(ListNode *head) {
+        if (head == NULL)   return NULL;
+        for (auto p = head; p; ) {
+            ListNode *next = p->next;
+            ListNode *tmp = new ListNode(p->val);
+            tmp->next = p->next;
+            p->next = tmp;
+            p = next;
+        }
+        for (auto p = head; p; p = p->next) {
+            if (p->random) {
+                p->next->random = p->random->next;
+                p = p->next;
+            }
+        }
+        ListNode *dumy = new ListNode(-1);
+        ListNode *p = dumy;
+        while (head) {
+            p->next = head->next;
+            head = head->next->next;
+            p = p->next;
+        }
+        return dumy->next;
+    }
+};
+
+```
+# 二叉搜索树与双向链表
+题目链接：[题目链接](https://www.acwing.com/problem/content/87/)<br>
+讲解视频：[讲解视频](https://www.bilibili.com/video/av41342810)
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* convert(TreeNode* root) {
+        if (!root)  return NULL;
+        auto sides = dfs(root);
+        return sides.first;
+    }
+    pair<TreeNode*, TreeNode*> dfs(TreeNode *root) {
+        if (!root->left && !root->right)    return {root, root};
+        if (root->left && root->right) {
+            auto lsides = dfs(root->left), rsides = dfs(root->right);
+            lsides.second->right = root, root->left = lsides.second;
+            root->right = rsides.first, rsides.first->left = root;
+            return {lsides.first, rsides.second};
+        }
+        if (root->left) {
+            auto lsides = dfs(root->left);
+            lsides.second->right = root, root->left = lsides.second;
+            return {lsides.first, root};
+        }
+        if (root->right) {
+            auto rsides = dfs(root->right);
+            root->right = rsides.first, rsides.first->left = root;
+            return {root, rsides.second};
+        }
+    }
+};
+```

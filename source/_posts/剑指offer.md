@@ -653,3 +653,21 @@ public:
     }
 };
 ```
+# 数组中出现次数超过一半的数字
+[题目链接](https://www.acwing.com/problem/content/48/)
+```C++
+class Solution {
+public:
+    int moreThanHalfNum_Solution(vector<int>& nums) {
+        int cnt = 0, val = -1;
+        for (auto x : nums) {
+            if (!cnt)   val = x, cnt = 1;
+            else {
+                if (x == val)   cnt ++ ;
+                else    cnt -- ;
+            }
+        }
+        return val;
+    }
+};
+```

@@ -691,3 +691,32 @@ public:
     }
 };
 ```
+# 数据流中的中位数
+[题目链接](https://www.acwing.com/problem/content/88/)
+```C++
+class Solution {
+public:
+
+    priority_queue<int> max_heap;   //大根堆
+    priority_queue<int, vector<int>, greater<int>> min_heap;    //小根堆
+
+    void insert(int num){
+        max_heap.push(num);
+        if (min_heap.size() && max_heap.top() > min_heap.top()) {
+            auto maxv = max_heap.top(), minv = min_heap.top();
+            max_heap.pop(), min_heap.pop();
+            max_heap.push(minv), min_heap.push(maxv);
+        }
+        
+        if (max_heap.size() > min_heap.size() + 1) {
+            min_heap.push(max_heap.top());
+            max_heap.pop();
+        }
+    }
+
+    double getMedian(){
+        if ((max_heap.size() + min_heap.size()) & 1)  return max_heap.top();
+        return (max_heap.top() + min_heap.top()) / 2.0;
+    }
+};
+```

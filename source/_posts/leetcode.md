@@ -33,6 +33,28 @@ public:
 };
 ```
 
+```Python
+class Solution:
+    ans = []
+    def dfs(self, s, u):
+        s = list(s)
+        if (u == len(s)):
+            s = ''.join(s)
+            self.ans.append(s)
+            return 
+        self.dfs(s, u + 1)
+        if (s[u] >= 'A'):
+            s[u] = chr(ord(s[u]) ^ 32) # ASCII码与字符相互转换
+            self.dfs(s, u + 1)
+    def letterCasePermutation(self, S: str) -> List[str]:
+        self.ans = []
+        self.dfs(S, 0)
+        return self.ans
+    
+```
+
+
+
 # dfs-77. Combinations
 
 [题目链接](<https://leetcode.com/problems/combinations/>)

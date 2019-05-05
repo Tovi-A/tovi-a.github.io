@@ -566,3 +566,157 @@ public:
     }
 };
 ```
+# 序列化二叉树
+[题目链接](https://www.acwing.com/problem/content/46/)
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        string res;
+        dfs_s(root, res);
+        return res;
+    }
+    
+    void dfs_s(TreeNode *root, string &res) {
+        if (!root) {
+            res += "null ";
+            return ;
+        }
+        res += to_string(root->val) + ' ';
+        dfs_s(root->left, res);
+        dfs_s(root->right, res);
+    }
+    
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        int u = 0;
+        return dfs_d(data, u);
+    }
+    
+    TreeNode* dfs_d(string data, int &u) {
+        if (u == data.size())   return NULL;
+        int k = u;
+        while (data[k] != ' ')  k ++ ;
+        if (data[u] == 'n') {
+            u = k + 1;
+            return NULL;
+        }
+        int val = 0;
+        for (int i = u; i < k; i++)     val = val * 10 + data[i] - '0';
+        u = k + 1;
+        auto root = new TreeNode(val);
+        root->left = dfs_d(data, u);
+        root->right = dfs_d(data, u);
+        return root;
+    }
+};
+```
+# 数字排列
+[题目链接](https://www.acwing.com/problem/content/47/)<br>
+```C++
+class Solution {
+public:
+    
+    vector<vector<int>> ans;
+    vector<int> path;
+    
+    vector<vector<int>> permutation(vector<int>& nums) {
+        path.resize(nums.size());
+        sort(nums.begin(), nums.end());
+        dfs(nums, 0, 0, 0);
+        return ans;
+    }
+    
+    void dfs(vector<int> &nums, int u, int start, int state) {
+        if (u == nums.size()) {
+            ans.push_back(path);
+            return ;
+        }
+        if (!u || nums[u] != nums[u-1])     start = 0;
+        for (int i = start; i<nums.size(); i++) {
+            if (!(state >> i & 1)) {
+                path[i] = nums[u];
+                dfs(nums, u + 1, i + 1, state + (1 << i));
+            }
+        }
+    }
+};
+```
+# 数组中出现次数超过一半的数字
+[题目链接](https://www.acwing.com/problem/content/48/)
+```C++
+class Solution {
+public:
+    int moreThanHalfNum_Solution(vector<int>& nums) {
+        int cnt = 0, val = -1;
+        for (auto x : nums) {
+            if (!cnt)   val = x, cnt = 1;
+            else {
+                if (x == val)   cnt ++ ;
+                else    cnt -- ;
+            }
+        }
+        return val;
+    }
+};
+```
+# 最小的k个数
+[题目链接](https://www.acwing.com/problem/content/49/)
+```C++
+class Solution {
+public:
+    vector<int> getLeastNumbers_Solution(vector<int> input, int k) {
+        priority_queue<int> heap;
+        for (auto x : input) {
+            heap.push(x);
+            if (heap.size() > k)    heap.pop();
+        }
+        
+        vector<int> res;
+        while (heap.size()) res.push_back(heap.top()), heap.pop();
+        
+        reverse(res.begin(), res.end());
+        return res;
+    }
+};
+```
+# 数据流中的中位数
+[题目链接](https://www.acwing.com/problem/content/88/)
+```C++
+class Solution {
+public:
+
+    priority_queue<int> max_heap;   //大根堆
+    priority_queue<int, vector<int>, greater<int>> min_heap;    //小根堆
+
+    void insert(int num){
+        max_heap.push(num);
+        if (min_heap.size() && max_heap.top() > min_heap.top()) {
+            auto maxv = max_heap.top(), minv = min_heap.top();
+            max_heap.pop(), min_heap.pop();
+            max_heap.push(minv), min_heap.push(maxv);
+        }
+        
+        if (max_heap.size() > min_heap.size() + 1) {
+            min_heap.push(max_heap.top());
+            max_heap.pop();
+        }
+    }
+
+    double getMedian(){
+        if ((max_heap.size() + min_heap.size()) & 1)  return max_heap.top();
+        return (max_heap.top() + min_heap.top()) / 2.0;
+    }
+};
+```

@@ -105,3 +105,72 @@ class Solution:
             self.dfs(path, i + 1, n, k - 1)
             path.pop()
 ```
+# dfs-257. Binary Tree Paths
+
+[题目链接](https://leetcode.com/problems/binary-tree-paths/)
+
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    
+    vector<string> ans;
+    
+    vector<string> binaryTreePaths(TreeNode* root) {
+        string path;
+        dfs(root, path);
+        
+        return ans;
+    }
+    
+    void dfs(TreeNode* root, string path) {
+        if (!root)  return ;
+        
+        if (path.size())    path += "->";
+        path += to_string(root->val);
+        
+        if (!root->left && !root->right)    ans.push_back(path);
+        else {
+            dfs(root->left, path);
+            dfs(root->right, path);
+        }
+    }
+};
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    ans = []
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        self.ans = []
+        path = ""
+        self.dfs(root, path)
+        return self.ans
+    def dfs(self, root, path):
+        if (not root):
+            return 
+        if (len(path)):
+            path += "->"
+        path = path + str(root.val)
+        if (not root.left and not root.right):
+            self.ans.append(path)
+        else:
+            self.dfs(root.left, path)
+            self.dfs(root.right, path)
+```
+

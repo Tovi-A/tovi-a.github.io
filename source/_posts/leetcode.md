@@ -174,3 +174,84 @@ class Solution:
             self.dfs(root.right, path)
 ```
 
+# dfs-93. Restore IP Addresses
+
+[题目链接](<https://leetcode.com/problems/restore-ip-addresses/>)
+
+```C++
+class Solution {
+public:
+    
+    vector<string> ans;
+    
+    vector<string> restoreIpAddresses(string s) {
+        string path;
+        dfs(s, 0, 0, path);
+        return ans;
+    }
+    
+    void dfs(string &s, int u, int k, string path) {
+        if (u == s.size()) {
+            if (k == 4) {
+                ans.push_back(path.substr(1));
+            }
+            return ;
+        }
+        
+        if (k > 4)  return ;
+        
+        if (s[u] == '0')    dfs(s, u + 1, k + 1, path + ".0");
+        else {
+            for (int i = u, t = 0; i < s.size(); i ++ ) {
+                t = t * 10 + s[i] - '0';
+                if ( t < 256)   dfs(s, i + 1, k + 1, path + '.' + to_string(t));
+                else    break;
+            }
+        }
+    }
+};
+```
+
+# dfs-95. Unique Binary Search Trees II
+
+[题目链接](https://leetcode.com/problems/unique-binary-search-trees-ii/)
+
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<TreeNode*> generateTrees(int n) {
+        if (!n)     return vector<TreeNode*>();
+        return dfs(1, n);
+    }
+    
+    vector<TreeNode*> dfs(int l, int r) {
+        vector<TreeNode*> res;
+        if (l > r) {
+            res.push_back(NULL);
+            return res;
+        }
+        
+        for (int i = l; i <= r; i ++ ) {
+            auto left = dfs(l, i-1), right = dfs(i + 1, r);
+            for (auto &lt : left) {
+                for (auto & rt : right) {
+                    auto root = new TreeNode(i);
+                    root->left = lt, root->right = rt;
+                    res.push_back(root);
+                }
+            }
+        }
+        return res;
+    }
+};
+```
+

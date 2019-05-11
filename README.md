@@ -20,3 +20,10 @@
 - git commit -m "提交大文件"
 - git push origin hexo
 3. 若还是不能上传，则撤回commit，再次尝试。撤回commit可参考[撤回](https://blog.csdn.net/quiet_girl/article/details/79487966)。
+
+# 插入图片
+
+修改配置文件_config.yml中：post_asset_folder: true.
+
+安装hexo-asset-image插件:npm install https://github.com/CodeFalling/hexo-asset-image --save
+

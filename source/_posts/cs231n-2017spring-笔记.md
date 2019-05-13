@@ -15,6 +15,8 @@ mathjax: true
 
 - 语义分割(**Semantic Segmentation**)
 
+  [FCN参考链接](https://blog.csdn.net/sinat_24143931/article/details/78696442)
+
    在下面这张图中，我们想用标记策略去标记每一个像素点。
 
 ![](./cs231n-2017spring-笔记/1.png)

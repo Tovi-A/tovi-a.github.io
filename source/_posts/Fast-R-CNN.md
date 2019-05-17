@@ -9,6 +9,8 @@ comments: true
 mathjax: true
 ---
 
+论文下载：[Fast R-CNN](https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/source/_posts/Fast-R-CNN/Fast%20R-CNN.pdf)
+
 # 摘要
 
 本文提出了一种基于快速区域的卷积网络方法（Fast R-CNN）用于目标检测。Fast R-CNN建立在先前的工作基础上，以使用深度卷积网络有效地对对象提取进行分类。与之前的工作相比，Fast R-CNN采用了多项创新来提高训练和测试速度，同时提高了检测精度。Fast R-CNN训练非常深的VGG16网络比R-CNN快9倍，在测试时间快213倍，并在PASCAL VOC 2012上实现更高的mAP。与SPPnet相比，Fast R-CNN训练VGG16 3倍速更快，测试速度快10倍，并且更准确。快速R-CNN在Python和C ++中实现（使用Caffe），可通过https：//github.com/rbgirshick/fast-rcnn的开源MIT许可证获得。

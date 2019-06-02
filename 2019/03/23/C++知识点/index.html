@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="侯捷老师－C++课件_面向对象高级编程：链接 什么是深复制？什么是浅复制？（深拷贝与浅拷贝）参考链接：深拷贝与浅拷贝   经典分类　　　 不带指针的类(complex) 带指针的类(string)头文件中的防卫式声明　　　123456#ifndef __COMPLEX__#define __COMPLEX__..........#endif   模板(class template)12345678">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++知识点">
+<meta property="og:url" content="http://yoursite.com/2019/03/23/C++知识点/index.html">
+<meta property="og:site_name" content="Tovi&#39;home">
+<meta property="og:description" content="侯捷老师－C++课件_面向对象高级编程：链接 什么是深复制？什么是浅复制？（深拷贝与浅拷贝）参考链接：深拷贝与浅拷贝   经典分类　　　 不带指针的类(complex) 带指针的类(string)头文件中的防卫式声明　　　123456#ifndef __COMPLEX__#define __COMPLEX__..........#endif   模板(class template)12345678">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/6.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/7.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/8.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/9.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/10.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/11.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/1.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/2.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/3.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/4.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/5.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/6.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/7.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/8.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/9.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/10.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/11.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/12.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/13.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/14.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/15.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/16.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/17.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/18.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/19.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/20.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/21.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/22.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/23.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/24.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/25.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/26.png?raw=true">
+<meta property="og:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/27.png?raw=true">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/28.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/29.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/30.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/31.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/32.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/33.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/34.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/35.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/36.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/37.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/38.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/39.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/40.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/41.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/42.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/43.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/44.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/45.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/46.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/47.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/48.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/49.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/50.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/51.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/52.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/53.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/54.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/55.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/56.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/57.png">
+<meta property="og:image" content="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/58.png">
+<meta property="og:updated_time" content="2019-06-02T04:59:10.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++知识点">
+<meta name="twitter:description" content="侯捷老师－C++课件_面向对象高级编程：链接 什么是深复制？什么是浅复制？（深拷贝与浅拷贝）参考链接：深拷贝与浅拷贝   经典分类　　　 不带指针的类(complex) 带指针的类(string)头文件中的防卫式声明　　　123456#ifndef __COMPLEX__#define __COMPLEX__..........#endif   模板(class template)12345678">
+<meta name="twitter:image" content="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/6.png?raw=true">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/23/C++知识点/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>C++知识点 | Tovi'home</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tovi'home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/C++知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tovi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tovi'home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++知识点
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-23 07:46:24" itemprop="dateCreated datePublished" datetime="2019-03-23T07:46:24+08:00">2019-03-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 12:59:10" itemprop="dateModified" datetime="2019-06-02T12:59:10+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/03/23/C++知识点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/23/C++知识点/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>侯捷老师－C++课件_面向对象高级编程：<a href="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-c%2B%2B.pdf" target="_blank" rel="noopener">链接</a></p>
+<h1 id="什么是深复制？什么是浅复制？（深拷贝与浅拷贝）"><a href="#什么是深复制？什么是浅复制？（深拷贝与浅拷贝）" class="headerlink" title="什么是深复制？什么是浅复制？（深拷贝与浅拷贝）"></a>什么是深复制？什么是浅复制？（深拷贝与浅拷贝）</h1><p>参考链接：<a href="https://blog.csdn.net/bluescorpio/article/details/4322682" target="_blank" rel="noopener">深拷贝与浅拷贝</a>  </p>
+<h1 id="经典分类"><a href="#经典分类" class="headerlink" title="经典分类　　　"></a>经典分类　　　</h1><ol>
+<li>不带指针的类(complex)</li>
+<li>带指针的类(string)<h1 id="头文件中的防卫式声明"><a href="#头文件中的防卫式声明" class="headerlink" title="头文件中的防卫式声明　　　"></a>头文件中的防卫式声明　　　</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __COMPLEX__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __COMPLEX__</span></span><br><span class="line"></span><br><span class="line">..........</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="模板-class-template"><a href="#模板-class-template" class="headerlink" title="模板(class template)"></a>模板(class template)</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">complex</span> (T r = <span class="number">0</span>, T i = <span class="number">0</span>) : re(r), im(i) &#123;     &#125;</span><br><span class="line">    <span class="keyword">complex</span>&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="keyword">complex</span>&amp;);</span><br><span class="line">    <span class="function">T <span class="title">real</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br><span class="line">    <span class="function">T <span class="title">imag</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> im; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    T re, im;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">complex</span>&amp; __doapl (<span class="keyword">complex</span>*, <span class="keyword">const</span> <span class="keyword">complex</span>&amp;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">complex</span>&lt;<span class="keyword">double</span>&gt; c1(<span class="number">2.5</span>, <span class="number">1.5</span>);</span><br><span class="line">    <span class="keyword">complex</span>&lt;<span class="keyword">int</span>&gt; c2(<span class="number">2</span>, <span class="number">6</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="内联函数-inline"><a href="#内联函数-inline" class="headerlink" title="内联函数(inline)"></a>内联函数(inline)</h1><p>函数在类本体内定义则是内联函数，否则不是。所有函数都可以写成inline，但有些函数定义为inline，但是编译器没有能力将他做成inline。（函数过于复杂则不能）</p>
+<h1 id="访问级别"><a href="#访问级别" class="headerlink" title="访问级别　　　"></a>访问级别　　　</h1><p>private层变量只能class本体成员函数访问。</p>
+<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><ul>
+<li>创建一个对象时候，一个函数会自动调用起来，这个函数就是构造函数。  </li>
+<li>构造函数没有返回值。</li>
+<li>构造函数可以有默认值。</li>
+<li>初始化参数：仅构造函数才享有。　　　<blockquote>
+<p>构造函数有两个阶段：</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>初始化阶段。（这就是初始化参数的效果，如果不那样做，就等于放弃了初始化阶段，从而效率变差。）</li>
+<li>赋值阶段。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">complex</span> (<span class="keyword">double</span> r = <span class="number">0</span>, <span class="keyword">double</span> i = <span class="number">0</span>) : re (r), im (i) &#123; &#125;   <span class="comment">//初始化参数　</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    相当于 complex (double r = 0, double i = 0) &#123; re = r; im = i; &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">complex</span>&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="keyword">complex</span>&amp;);</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">real</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">imag</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> im; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> re, im;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">complex</span>&amp; __doapl (<span class="keyword">complex</span>*, <span class="keyword">const</span> <span class="keyword">complex</span>&amp;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">complex</span> <span class="title">c1</span><span class="params">(<span class="number">2</span>, <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">complex</span> c2;</span><br><span class="line">    <span class="keyword">complex</span>* p = <span class="keyword">new</span> <span class="keyword">complex</span>(<span class="number">4</span>);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="构造函数可以有很多个－overloading（重载）"><a href="#构造函数可以有很多个－overloading（重载）" class="headerlink" title="构造函数可以有很多个－overloading（重载）"></a>构造函数可以有很多个－overloading（重载）</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">real</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">real</span> <span class="params">(<span class="keyword">double</span> r)</span> </span>&#123; re = r; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">complex</span> (<span class="keyword">double</span> r = <span class="number">0</span>, <span class="keyword">double</span> i = <span class="number">0</span>) : re (r), im (i) &#123; &#125;   <span class="comment">//初始化参数　</span></span><br><span class="line">    <span class="keyword">complex</span> () : re(<span class="number">0</span>), im(<span class="number">0</span>) &#123; &#125;   <span class="comment">//这种写法不行，会使得编译器犹豫不知道选择哪一个</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    complex c1;</span></span><br><span class="line"><span class="comment">    complex c2();</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">complex</span>&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="keyword">complex</span>&amp;);</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">real</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">imag</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> im; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> re, im;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">complex</span>&amp; __doapl (<span class="keyword">complex</span>*, <span class="keyword">const</span> <span class="keyword">complex</span>&amp;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="构造函数放在private区"><a href="#构造函数放在private区" class="headerlink" title="构造函数放在private区"></a>构造函数放在private区</h1><blockquote>
+<p>singleton:外部只有一个接口访问这个类，单例模式。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> A&amp; <span class="title">getInstance</span><span class="params">()</span></span>;</span><br><span class="line">	setup() &#123; ... &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	A();</span><br><span class="line">	A(<span class="keyword">const</span> A&amp; rhs);</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">A&amp; A::getInstance() &#123;</span><br><span class="line">	<span class="keyword">static</span> A a;</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>调用时候，不能用传统方式A a();　只能用A::getInstance().setup();</p>
+<h1 id="常量成员函数-const-member-functions"><a href="#常量成员函数-const-member-functions" class="headerlink" title="常量成员函数(const member functions)"></a>常量成员函数(const member functions)</h1><p>函数分为内部改变数据的与内部不会改变数据的。不会改变数据的则最好使用const。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">real</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> im; &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="函数该加const时候不加const的后果"><a href="#函数该加const时候不加const的后果" class="headerlink" title="函数该加const时候不加const的后果"></a>函数该加const时候不加const的后果</h1><p>这样调用是ok 的。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">complex</span> <span class="title">c1</span><span class="params">(<span class="number">2</span>, <span class="number">1</span>)</span></span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; c1.real();</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; c1.imag();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面这种情况不加，当c1.real()执行时，real()函数后面没有加const，此时，c1.real()语句是const，不能更改，然后real()函数会发生更改，所以会导致编译器错误。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">const</span> <span class="keyword">complex</span> <span class="title">c1</span><span class="params">(<span class="number">2</span>, <span class="number">1</span>)</span></span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; c1.real();</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; c1.imag();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="参数传递：pass-by-value-vs-pass-by-reference-to-const"><a href="#参数传递：pass-by-value-vs-pass-by-reference-to-const" class="headerlink" title="参数传递：pass by value vs. pass by reference(to const)"></a>参数传递：pass by value vs. pass by reference(to const)</h1><p>值传递：整个包都会传递过去，效率较差。<br><br>尽量所有参数都传引用。<br><br>传递速度很快，且不能更改：则pass by reference to const。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">complex</span> (<span class="keyword">double</span> r = <span class="number">0</span>, <span class="keyword">double</span> i = <span class="number">0</span>) : re (r), im (i) &#123; &#125;   <span class="comment">//初始化参数　</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    相当于 complex (double r = 0, double i = 0) &#123; re = r; im = i; &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">complex</span>&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="keyword">complex</span>&amp;);</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">real</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">imag</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> im; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span> re, im;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">complex</span>&amp; __doapl (<span class="keyword">complex</span>*, <span class="keyword">const</span> <span class="keyword">complex</span>&amp;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="返回值传递：return-by-value-vs-return-by-reference-to-const"><a href="#返回值传递：return-by-value-vs-return-by-reference-to-const" class="headerlink" title="返回值传递：return by value vs. return by reference(to const)"></a>返回值传递：return by value vs. return by reference(to const)</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ostream&amp; <span class="keyword">operator</span> &lt;&lt; (ostream&amp; os, <span class="keyword">const</span> <span class="keyword">complex</span>&amp; x) &#123;</span><br><span class="line">	<span class="keyword">return</span> os &lt;&lt; <span class="string">'('</span> &lt;&lt; real(x) &lt;&lt; <span class="string">','</span> &lt;&lt; imag(x) &lt;&lt; <span class="string">')'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="友元-friend"><a href="#友元-friend" class="headerlink" title="友元(friend)"></a>友元(friend)</h1><blockquote>
+<p>友元函数是可以直接访问类的私有成员的非成员函数。 它是定义在类外的普通函数，它不属于任何类，但需要在类的定义中加以声明，声明时只需在友元的名称前加上关键字friend。<br><br>参考链接：<a href="https://blog.csdn.net/jackystudio/article/details/11799777" target="_blank" rel="noopener">友元</a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">complex</span>&amp; __doapl(<span class="keyword">complex</span>* ths, <span class="keyword">const</span> <span class="keyword">complex</span>&amp; r) &#123;</span><br><span class="line">	ths-&gt;re += r.re;	<span class="comment">//自由取得friend的private成员</span></span><br><span class="line">	ths-&gt;im += r.im;</span><br><span class="line">	<span class="keyword">return</span> *ths;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="相同class-的各个objects互为friends-友元"><a href="#相同class-的各个objects互为friends-友元" class="headerlink" title="相同class 的各个objects互为friends(友元)"></a>相同class 的各个objects互为friends(友元)</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">complex</span> (<span class="keyword">double</span> r = <span class="number">0</span>, <span class="keyword">double</span> i = <span class="number">0</span>) : re (r), im (i) &#123; &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">const</span> <span class="keyword">complex</span>&amp; param)</span> </span>&#123; 	<span class="comment">//完美解释</span></span><br><span class="line">		<span class="keyword">return</span> param.re + param.im;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">double</span> re, im;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">complex</span> <span class="title">c1</span><span class="params">(<span class="number">2</span>, <span class="number">1</span>)</span></span>;</span><br><span class="line">	<span class="keyword">complex</span> c2;</span><br><span class="line">	c2.func(c1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="操作符重载－１，-成员函数，this"><a href="#操作符重载－１，-成员函数，this" class="headerlink" title="操作符重载－１，　成员函数，this"></a>操作符重载－１，　成员函数，this</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">complex</span>&amp; __doapl(<span class="keyword">complex</span>* ths, <span class="keyword">const</span> <span class="keyword">complex</span>&amp; r) &#123;</span><br><span class="line">	ths-&gt;re += r.re;</span><br><span class="line">	ths-&gt;im += r.im;</span><br><span class="line">	<span class="keyword">return</span> *ths;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">complex</span>&amp; <span class="keyword">complex</span>::<span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="keyword">complex</span>&amp; r) &#123;</span><br><span class="line">	<span class="keyword">return</span> __doapl (<span class="keyword">this</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">complex</span> <span class="title">c1</span><span class="params">(<span class="number">2</span>, <span class="number">1</span>)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">complex</span> <span class="title">c2</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">	c2 += c1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">====&gt;&gt;&gt;<span class="comment">//所有成员函数都带有一个隐藏的this 指针</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">complex</span>&amp; <span class="keyword">complex</span>::<span class="keyword">operator</span> += (<span class="keyword">this</span>, <span class="keyword">const</span> <span class="keyword">complex</span>&amp; r) &#123;</span><br><span class="line">	<span class="keyword">return</span> __doapl (<span class="keyword">this</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="return-by-reference-语法分析"><a href="#return-by-reference-语法分析" class="headerlink" title="return by reference 语法分析"></a>return by reference 语法分析</h1><blockquote>
+<p>传递着无需知道接受者是以reference形式接收<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">complex</span>&amp; __doapl(<span class="keyword">complex</span>* ths, <span class="keyword">const</span> <span class="keyword">complex</span>&amp; r) &#123;</span><br><span class="line">	ths-&gt;re += r.re;</span><br><span class="line">	ths-&gt;im += r.im;</span><br><span class="line">	<span class="keyword">return</span> *ths;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">complex</span>&amp; <span class="keyword">complex</span>::<span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="keyword">complex</span>&amp; r) &#123;</span><br><span class="line">	<span class="keyword">return</span> __doapl (<span class="keyword">this</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="操作符重载－２，非成员函数-无this"><a href="#操作符重载－２，非成员函数-无this" class="headerlink" title="操作符重载－２，非成员函数(无this)"></a>操作符重载－２，非成员函数(无this)</h1><p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/6.png?raw=true" alt="image"><br><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/7.png?raw=true" alt="image"><br><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/8.png?raw=true" alt="image"><br><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/9.png?raw=true" alt="image"><br><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/10.png?raw=true" alt="image"><br><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/11.png?raw=true" alt="image"></p>
+<h1 id="类里面带着指针"><a href="#类里面带着指针" class="headerlink" title="类里面带着指针"></a>类里面带着指针</h1><p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/1.png?raw=true" alt="image"><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">s3</span><span class="params">(s1)</span></span>; 	<span class="comment">//拷贝构造</span></span><br><span class="line"><span class="built_in">string</span> s3 = s2; 	<span class="comment">//拷贝赋值</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/2.png?raw=true" alt="image"><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	String(<span class="keyword">const</span> String&amp; str); 	<span class="comment">//拷贝构造</span></span><br><span class="line">	String&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> String&amp; str);	<span class="comment">//拷贝赋值</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">char</span>* m_data;	<span class="comment">//最好写成动态形式</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/3.png?raw=true" alt="image"><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span>[] m_data; 	<span class="comment">//析构清理</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/4.png?raw=true" alt="image"></p>
+<blockquote>
+<p>会导致内存泄露，制造野指针，变成孤儿（浅拷贝）。</p>
+</blockquote>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/5.png?raw=true" alt="image"></p>
+<blockquote>
+<p>深拷贝</p>
+</blockquote>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/6.png?raw=true" alt="image"></p>
+<blockquote>
+<p>三步：１、先分配空间。２、重新创造自己。３、拷贝过来。<br>必须要进行检测自我赋值。如果相同时候结果会出错，将原地址也清空了。</p>
+</blockquote>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/7.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/8.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/9.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/10.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/11.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/12.png?raw=true" alt="image"></p>
+<blockquote>
+<p>stack自动释放，而heap必须手动释放。</p>
+</blockquote>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/13.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/14.png?raw=true" alt="image"></p>
+<blockquote>
+<p>静态，作用域结束之后仍然存在。</p>
+</blockquote>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/15.png?raw=true" alt="image"></p>
+<blockquote>
+<p>全局作用域。</p>
+</blockquote>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/16.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/17.png?raw=true" alt="image"></p>
+<blockquote>
+<p>new分为三个动作：１、分配内存。２、转型。３、构造函数。</p>
+</blockquote>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/18.png?raw=true" alt="image"></p>
+<blockquote>
+<p>delete两个动作：１、析构函数。２、delete.</p>
+</blockquote>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/19.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/20.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/21.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/22.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/23.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/24.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/25.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/26.png?raw=true" alt="image"></p>
+<p><img src="https://github.com/Tovi-A/tovi-a.github.io/blob/hexo/Additional_Resources/houjie-kejian/27.png?raw=true" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/28.png" alt="image"></p>
+<blockquote>
+<p>==&gt;&gt;后面是以c的调用。相同的函数传递的是不同的地址。成员函数有一个隐藏的this指针，可以在函数中去使用它，在参数列中不可以写。加上static后不属于某一个对象，只有一份。<strong>静态函数没有this指针，指针去存取静态数据，不能像一般成员函数那样存取一般数据成员。</strong></p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/29.png" alt="image"></p>
+<blockquote>
+<p><strong>静态数据一定要在类的外部设置初值（定义）。</strong>　静态函数只能处理静态数据。两种调用方式：类调用、对象调用。</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/30.png" alt="image"></p>
+<blockquote>
+<p>这个才是更好的写法。有调用a 才会出现，使得资源不浪费。</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/31.png" alt="image"></p>
+<blockquote>
+<p>生成的class只想产生一个对象。这里的A只有一份，设置静态函数使得与外界联系的唯一接口。这里如果没有创建a，则会浪费资源。</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/32.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/33.png" alt="image"></p>
+<blockquote>
+<p>模板写法。T 只是一个符号而已。</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/34.png" alt="image"></p>
+<blockquote>
+<p>编译器会对函数模板进行参数推到。&lt;操作符重载。</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/35.png" alt="image"></p>
+<blockquote>
+<p>所有东西被包装一个namespace里面，防止自己写的与其他人写的重名。也可以不一下全部打开，一条一条的打开。</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/36.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/37.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/38.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/39.png" alt="image"></p>
+<blockquote>
+<p>里面有另外一个东西。queue里面有一个deque。A has a B,A的功能让B去完成。<br>Adapter设计模式。queue是一个Adapter.</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/40.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/41.png" alt="image"></p>
+<blockquote>
+<p>构造由内而外，析构由外而内。</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/42.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/43.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/44.png" alt="image"></p>
+<blockquote>
+<p>父类的析构函数必须是virtual.</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/45.png" alt="image"></p>
+<blockquote>
+<p>纯虚函数：子类一定要去重新定义他，父类并没有去定义。这也是一种设计模式。</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/46.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/47.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/48.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/49.png" alt="image"></p>
+<blockquote>
+<p>既有继承，又有复合，构造时候谁先？</p>
+</blockquote>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/50.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/51.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/52.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/53.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/54.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/55.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/56.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/57.png" alt="image"></p>
+<p><img src="https://media.githubusercontent.com/media/Tovi-A/tovi-a.github.io/hexo/Additional_Resources/houjie-kejian/58.png" alt="image"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/23/二分查找/" rel="next" title="二分查找">
+                <i class="fa fa-chevron-left"></i> 二分查找
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/23/支持向量机/" rel="prev" title="支持向量机">
+                支持向量机 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Tovi</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/tovi1995@qq.com" title="E-Mail &rarr; tovi1995@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是深复制？什么是浅复制？（深拷贝与浅拷贝）"><span class="nav-number">1.</span> <span class="nav-text">什么是深复制？什么是浅复制？（深拷贝与浅拷贝）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典分类"><span class="nav-number">2.</span> <span class="nav-text">经典分类　　　</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#头文件中的防卫式声明"><span class="nav-number">3.</span> <span class="nav-text">头文件中的防卫式声明　　　</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模板-class-template"><span class="nav-number">4.</span> <span class="nav-text">模板(class template)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联函数-inline"><span class="nav-number">5.</span> <span class="nav-text">内联函数(inline)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问级别"><span class="nav-number">6.</span> <span class="nav-text">访问级别　　　</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数"><span class="nav-number">7.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数可以有很多个－overloading（重载）"><span class="nav-number">8.</span> <span class="nav-text">构造函数可以有很多个－overloading（重载）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数放在private区"><span class="nav-number">9.</span> <span class="nav-text">构造函数放在private区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常量成员函数-const-member-functions"><span class="nav-number">10.</span> <span class="nav-text">常量成员函数(const member functions)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数该加const时候不加const的后果"><span class="nav-number">11.</span> <span class="nav-text">函数该加const时候不加const的后果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数传递：pass-by-value-vs-pass-by-reference-to-const"><span class="nav-number">12.</span> <span class="nav-text">参数传递：pass by value vs. pass by reference(to const)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#返回值传递：return-by-value-vs-return-by-reference-to-const"><span class="nav-number">13.</span> <span class="nav-text">返回值传递：return by value vs. return by reference(to const)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#友元-friend"><span class="nav-number">14.</span> <span class="nav-text">友元(friend)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相同class-的各个objects互为friends-友元"><span class="nav-number">15.</span> <span class="nav-text">相同class 的各个objects互为friends(友元)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作符重载－１，-成员函数，this"><span class="nav-number">16.</span> <span class="nav-text">操作符重载－１，　成员函数，this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#return-by-reference-语法分析"><span class="nav-number">17.</span> <span class="nav-text">return by reference 语法分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作符重载－２，非成员函数-无this"><span class="nav-number">18.</span> <span class="nav-text">操作符重载－２，非成员函数(无this)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类里面带着指针"><span class="nav-number">19.</span> <span class="nav-text">类里面带着指针</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tovi</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">
+  COME ON
+  </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+    <!-- 页面点击小红心 -->
+    <script type="text/javascript" src="/js/src/love.js"></script>
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '9YJDsLmy64dzuYwizhMps3bm-gzGzoHsz',
+    appKey: '81IxSx7xKmDHsRS85KySTjhJ',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>
